@@ -89,11 +89,9 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#">Inicio</a></li>
         <li class="active"><a href="{{ route('mis.eventos') }}">Mis Eventos</a></li>
-        <li><a href="{{ route('recomendados') }}">Recomendados</a></li>
-        <li><a href="{{ route('perfil') }}">Mi Perfil</a></li>
-
-        <!-- Mostrar el botón de "Eventos" solo si el usuario es administrador -->
-        @role('admin')
+  <li><a href="{{ route('recomendados') }}">Recomendados</a></li>
+  <li><a href="{{ route('perfil') }}">Mi Perfil</a></li>
+  @role('admin')
           <li><a href="{{ route('admin.eventos') }}">Eventos</a></li>
         @endrole
       </ul><br>
@@ -109,7 +107,7 @@
 
     <!-- Contenido principal -->
     <div class="col-sm-9">
-      <h4><small>PRÓXIMOS EVENTOS</small></h4>
+      <h4><small>EVENTOS RECOMENDADOS</small></h4>
       <hr>
       <h2>Festival de Tecnología</h2>
       <h5><span class="glyphicon glyphicon-time"></span> <span style="color: #f8f9fa;">25 de Abril, 2025 - Ciudad de México</span></h5>

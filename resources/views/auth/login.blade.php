@@ -1,68 +1,82 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Iniciar sesión</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login Page</title>
-   <!--Made with love by Mutiullah Samim -->
-   
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+  </head>
 
-	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-<div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" class="form-control" placeholder="username">
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" class="form-control" placeholder="password">
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</body>
+  <body class="gradient-custom">
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+
+                <div class="mb-md-5 mt-md-4 pb-5">
+                  <h2 class="fw-bold mb-2 text-uppercase">Iniciar sesión</h2>
+                  <p class="text-white-50 mb-5">¡Por favor, ingresa tu correo y contraseña!</p>
+
+                  {{-- Formulario de login --}}
+                  <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="form-outline form-white mb-4">
+                      <input type="email" name="email" class="form-control form-control-lg" required />
+                      <label class="form-label">Correo electrónico</label>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                      <input type="password" name="password" class="form-control form-control-lg" required />
+                      <label class="form-label">Contraseña</label>
+                    </div>
+
+                    <p class="small mb-5 pb-lg-2">
+                      <a class="text-white-50" href="#">¿Olvidaste tu contraseña?</a>
+                    </p>
+
+                    <button type="submit" class="btn btn-outline-light btn-lg px-5">
+                      Iniciar sesión
+                    </button>
+                  </form>
+
+                  {{-- Mostrar errores de validación --}}
+                  @if ($errors->any())
+                    <div class="alert alert-danger mt-3">
+                      <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
+
+                  <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                    <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                  </div>
+                </div>
+
+                <div>
+                  <p class="mb-0">
+                    ¿No tienes una cuenta?
+                    <a href="{{ route('register') }}" class="text-white-50 fw-bold">Regístrate</a>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+  </body>
 </html>

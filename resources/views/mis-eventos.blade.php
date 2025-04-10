@@ -20,13 +20,13 @@
     }
 
     .gradient-custom {
-      height: 100vh;
+      height: 100%;
       background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
       color: #f8f9fa;
     }
 
     .row.content {
-      height: 100%;
+      min-height: 100%;
     }
 
     .sidenav {
@@ -51,6 +51,9 @@
       color: #f8f9fa;
       padding: 15px;
       text-align: center;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
     }
 
     .label {
@@ -62,8 +65,7 @@
     }
 
     h4 small,
-    h5,
-    .comment small {
+    h5 {
       color: #f8f9fa !important;
     }
 
@@ -87,12 +89,10 @@
     <div class="col-sm-3 sidenav">
       <h4>Eventum</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Inicio</a></li>
+        <li><a href="{{ route('home') }}">Inicio</a></li>
         <li class="active"><a href="{{ route('mis.eventos') }}">Mis Eventos</a></li>
         <li><a href="{{ route('recomendados') }}">Recomendados</a></li>
         <li><a href="{{ route('perfil') }}">Mi Perfil</a></li>
-
-        <!-- Mostrar el botón de "Eventos" solo si el usuario es administrador -->
         @role('admin')
           <li><a href="{{ route('admin.eventos') }}">Eventos</a></li>
         @endrole
@@ -109,62 +109,22 @@
 
     <!-- Contenido principal -->
     <div class="col-sm-9">
-      <h4><small>PRÓXIMOS EVENTOS</small></h4>
+      <h4><small>Mis Eventos Registrados</small></h4>
       <hr>
+      
+      <!-- Evento 1 -->
       <h2>Festival de Tecnología</h2>
       <h5><span class="glyphicon glyphicon-time"></span> <span style="color: #f8f9fa;">25 de Abril, 2025 - Ciudad de México</span></h5>
-      
       <p>Explora lo último en inteligencia artificial, realidad aumentada y robótica en un festival único lleno de experiencias interactivas y networking con expertos.</p>
-      <br><br>
-      
-      <h4><small>RECOMENDADO PARA TI</small></h4>
       <hr>
+      
+      <!-- Evento 2 -->
       <h2>Concierto de Música Indie</h2>
       <h5><span class="glyphicon glyphicon-time"></span> <span style="color: #f8f9fa;">20 de Abril, 2025 - Guadalajara</span></h5>
       <h5><span class="label">Música</span> <span class="label">Festival</span></h5><br>
       <p>Una noche mágica con bandas emergentes y food trucks en un ambiente relajado. ¡Lleva a tus amigos y descubre tu nueva banda favorita!</p>
       <hr>
-
-      <h4>Déjanos tu comentario:</h4>
-      <form role="form">
-        <div class="form-group">
-          <textarea class="form-control" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Enviar</button>
-      </form>
-      <br><br>
       
-      <p><span class="badge">2</span> Comentarios:</p><br>
-      
-      <div class="row">
-        <div class="col-sm-2 text-center">
-          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>Luis <small>9 de Abril, 2025, 3:15 PM</small></h4>
-          <p>¡Excelente plataforma! Ya tengo mis boletos para el festival de tecnología. Gracias Eventum.</p>
-          <br>
-        </div>
-        <div class="col-sm-2 text-center">
-          <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>Carmen <small>8 de Abril, 2025, 7:50 PM</small></h4>
-          <p>Me encantó el diseño y lo fácil que es encontrar eventos cerca de mí. ¡Recomendado!</p>
-          <br>
-          <p><span class="badge">1</span> Respuesta:</p><br>
-          <div class="row">
-            <div class="col-sm-2 text-center">
-              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-xs-10">
-              <h4>Equipo Eventum <small>8 de Abril, 2025, 8:05 PM</small></h4>
-              <p>¡Gracias por tu apoyo, Carmen! Pronto añadiremos más ciudades 🎉</p>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
